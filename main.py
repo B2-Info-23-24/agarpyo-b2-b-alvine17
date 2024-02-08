@@ -1,6 +1,5 @@
 import pygame
 
-
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
@@ -8,6 +7,7 @@ running = True
 dt = 0
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+mouse_pressed = False  
 
 while running:
    
@@ -16,9 +16,16 @@ while running:
             running = False
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:  
+                if pygame.Vector2(event.pos).distance_to(player_pos) <= 40:
+                    mouse_pressed = True
+                    
+        elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                player_pos = pygame.Vector2(event.pos)
+                mouse_pressed = False
 
+    if mouse_pressed:
+        player_pos = pygame.mouse.get_pos()
     
     screen.fill("black")
 
