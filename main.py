@@ -15,6 +15,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:
+                player_pos = pygame.Vector2(event.pos)
+
     
     screen.fill("black")
 
