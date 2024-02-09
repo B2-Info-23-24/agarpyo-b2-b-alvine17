@@ -1,16 +1,23 @@
 import pygame
+from random_point import Point  
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 dt = 0
+points = []
+
+
+
+for _ in range(10):
+    points.append(Point(screen.get_width(), screen.get_height())) 
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 mouse_pressed = False  
 
 while running:
-   
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -19,7 +26,7 @@ while running:
             if event.button == 1:  
                 if pygame.Vector2(event.pos).distance_to(player_pos) <= 40:
                     mouse_pressed = True
-                    
+
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 mouse_pressed = False
@@ -31,6 +38,9 @@ while running:
 
     pygame.draw.circle(screen, "yellow", player_pos, 40)
 
+    for point in points:
+        point.draw(screen)
+
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
         player_pos.y -= 300 * dt
@@ -41,10 +51,8 @@ while running:
     if keys[pygame.K_d]:
         player_pos.x += 300 * dt
 
-    
     pygame.display.flip()
 
-   
     dt = clock.tick(60) / 1000
 
 pygame.quit()
