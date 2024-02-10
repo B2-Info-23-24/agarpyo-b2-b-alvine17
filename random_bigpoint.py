@@ -2,7 +2,7 @@ import pygame
 import random
 
 class BigPoint:
-    def __init__(self, s_width, s_height, nb_point=3, radius=40):
+    def __init__(self, s_width, s_height, nb_point=3, radius=20):
         self.s_width = s_width
         self.s_height = s_height
         self.nb_point = nb_point
@@ -15,7 +15,7 @@ class BigPoint:
 
     def pos_point_random(self):
         x = random.randint(0, self.s_width)
-        y = random.randint(0, self.s_height())
+        y = random.randint(0, self.s_height)
         return pygame.Vector2(x, y)
 
     def draw(self, screen):
