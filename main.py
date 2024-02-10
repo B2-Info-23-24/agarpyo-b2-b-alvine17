@@ -1,5 +1,6 @@
 import pygame
 from random_point import Point  
+from random_bigpoint import BigPoint
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
@@ -9,9 +10,11 @@ dt = 0
 points = []
 
 
+big_point = BigPoint(screen.get_width(), screen.get_height)
 
-for _ in range(10):
+for _ in range(5):
     points.append(Point(screen.get_width(), screen.get_height())) 
+
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 mouse_pressed = False  
@@ -37,6 +40,9 @@ while running:
     screen.fill("black")
 
     pygame.draw.circle(screen, "yellow", player_pos, 40)
+
+    big_point.draw(screen)
+
 
     for point in points:
         point.draw(screen)
