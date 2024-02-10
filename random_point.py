@@ -23,7 +23,7 @@ class Point:
         for index, food in enumerate(self.food_list):
             distance = food['position'].distance_to(player_position)
             if distance < self.food_radius + self.player_radius:
-
+                self.player_radius += 1 
                 return index
         return None
 
@@ -34,6 +34,8 @@ class Point:
             color = (0, 255, 0)
             self.food_list[index] = {'position': pygame.Vector2(x, y), 'color': color}
 
-    def draw(self, screen):
+    def draw(self, screen, player_pos):
         for food in self.food_list:
             pygame.draw.circle(screen, food['color'], (int(food['position'].x), int(food['position'].y)), self.food_radius)
+            pygame.draw.circle(screen, "yellow", (int(player_pos.x), int(player_pos.y)), self.player_radius + self.player_radius)
+            

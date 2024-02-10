@@ -41,7 +41,7 @@ while running:
     pygame.draw.circle(screen, "yellow", player_pos, 40)
     big_point.draw(screen)
     for point in points:
-        point.draw(screen)
+        point.draw(screen, player_pos)
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
