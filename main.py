@@ -68,4 +68,6 @@ while running:
     pygame.display.flip()
     dt = clock.tick(60) / 1000
 
+points[0].reset()
+
 pygame.quit()

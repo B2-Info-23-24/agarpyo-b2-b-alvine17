@@ -27,6 +27,9 @@ class Point:
             distance = food['position'].distance_to(player_position)
             if distance < self.food_radius + self.player_radius:
                 self.player_radius += 1 
+                self.score += 1 
+                self.speed += 5
+                self.size += 2
                 return index
         return None
 
@@ -50,3 +53,9 @@ class Point:
 
     def get_size_point(self): 
         return f"Taille: {self.size}"
+    
+    def reset(self):
+        self.score = 0  
+        self.speed = 100  
+        self.size = 40  
+        self.player_radius = 40
