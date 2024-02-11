@@ -9,7 +9,11 @@ class BigPoint:
         self.radius = radius
         self.points = []
 
-        for _ in range(nb_point):
+        self.spawn_points()
+
+    def spawn_points(self):
+        self.points = []
+        for _ in range(self.nb_point):
             point = self.pos_point_random()
             self.points.append(point)
 
@@ -18,16 +22,18 @@ class BigPoint:
         y = random.randint(0, self.s_height)
         return pygame.Vector2(x, y)
 
-
-    def trap_interaction(self, player_radius, player_pos):
+    def point_collition(self, player_radius, player_pos):
         for point in self.points:
             distance = point.distance_to(player_pos)
-            if distance < self.radius + player_radius: 
-                if player_radius > self.radius:  
-                    player_radius /= 2
+            if distance < self.radius + player_radius:
+                if player_radius > self.radius:
+                    times_larger = player_radius // self.radius
+                    player_radius //= times_larger
+                    player_pos.x //= times_larger
+                    player_pos.y //= times_larger
                 else:
-                    pass 
-    
+                    pass
+
     def draw(self, screen):
         for point in self.points:
-             pygame.draw.circle(screen, (255, 0, 0), (int(point.x), int(point.y)), self.radius)
+            pygame.draw.circle(screen, (255, 0, 0), (int(point.x), int(point.y)), self.radius)

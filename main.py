@@ -1,13 +1,18 @@
 import pygame
+from menu import main_menu
 from random_point import Point  
 from random_bigpoint import BigPoint
 
 pygame.init()
+pygame.display.set_caption("Jeu")
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 dt = 0
 points = []
+player_radius = 20
+
+
 
 big_point = BigPoint(screen.get_width(), screen.get_height())
 
@@ -31,7 +36,7 @@ while running:
             if event.button == 1:
                 mouse_pressed = False
 
-
+    big_point.point_collition(player_radius, player_pos)
 
     index = points[0].collision(player_pos)  
     if index is not None:
@@ -39,6 +44,16 @@ while running:
 
     if mouse_pressed:
         player_pos = pygame.mouse.get_pos()
+
+    if player_pos.x < 0:
+        player_pos.x = screen.get_width()
+    elif player_pos.x > screen.get_width():
+        player_pos.x = 0
+    if player_pos.y < 0:
+        player_pos.y = screen.get_height()
+    elif player_pos.y > screen.get_height():
+        player_pos.y = 0
+
 
     screen.fill("black")
     pygame.draw.circle(screen, "yellow", player_pos, 40)
@@ -67,6 +82,8 @@ while running:
 
     pygame.display.flip()
     dt = clock.tick(60) / 1000
+
+    player_radius = 20
 
 points[0].reset()
 
