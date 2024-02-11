@@ -15,7 +15,9 @@ big_point = BigPoint(screen.get_width(), screen.get_height())
 points.append(Point(screen.get_width(), screen.get_height())) 
 
 player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-mouse_pressed = False  
+mouse_pressed = False 
+
+font = pygame.font.Font(None, 36)
 
 while running:
     for event in pygame.event.get():
@@ -30,6 +32,7 @@ while running:
                 mouse_pressed = False
 
 
+
     index = points[0].collision(player_pos)  
     if index is not None:
         points[0].update_food_pos(index)
@@ -42,6 +45,15 @@ while running:
     big_point.draw(screen)
     for point in points:
         point.draw(screen, player_pos)
+
+
+    score_text = font.render(points[0].get_score(), True, (255, 255, 255))
+    speed_text = font.render(points[0].get_speed(), True, (255, 255, 255))
+    size_text = font.render(points[0].get_size_point(), True, (255, 255, 255))
+    screen.blit(score_text, (10, 10))
+    screen.blit(speed_text, (10, 50))
+    screen.blit(size_text, (10, 90))
+        
 
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:

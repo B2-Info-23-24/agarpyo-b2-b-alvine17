@@ -18,6 +18,16 @@ class BigPoint:
         y = random.randint(0, self.s_height)
         return pygame.Vector2(x, y)
 
+
+    def trap_interaction(self, player_radius, player_pos):
+        for point in self.points:
+            distance = point.distance_to(player_pos)
+            if distance < self.radius + player_radius: 
+                if player_radius > self.radius:  
+                    player_radius /= 2
+                else:
+                    pass 
+    
     def draw(self, screen):
         for point in self.points:
              pygame.draw.circle(screen, (255, 0, 0), (int(point.x), int(point.y)), self.radius)

@@ -8,6 +8,9 @@ class Point:
         self.food_radius = food_radius
         self.player_radius = player_radius
         self.food_list = []
+        self.score = 0  
+        self.speed = 100
+        self.size = 40 
 
         self.eating(nb_food)
 
@@ -38,4 +41,12 @@ class Point:
         for food in self.food_list:
             pygame.draw.circle(screen, food['color'], (int(food['position'].x), int(food['position'].y)), self.food_radius)
             pygame.draw.circle(screen, "yellow", (int(player_pos.x), int(player_pos.y)), self.player_radius + self.player_radius)
-            
+
+    def get_score(self):  
+        return f"Score: {self.score}"
+
+    def get_speed(self):  
+        return f"Vitesse: {self.speed}"
+
+    def get_size_point(self): 
+        return f"Taille: {self.size}"
