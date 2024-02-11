@@ -36,6 +36,11 @@ while running:
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 mouse_pressed = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q: 
+                running = False
+            elif event.key == pygame.K_ESCAPE:  
+                main_menu()
 
     if game_over_menu is None: 
         big_point.point_collition(player_radius, player_pos)
