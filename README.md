@@ -26,33 +26,6 @@ cd ../agarpyo-b2-b-alvine17
 
 Créez un environnement virtuel 
 
-# Agarpyo
-
-Agarpyo est un jeu local dans lequel le joueur contrôle une cellule dans un espace bidimensionnel. Le but est de devenir la plus grosse cellule en absorbant des cellules plus petites tout en évitant d'être touché par des cellules piègeuses. Le jeu est caractérisé par sa simplicité et son addictivité, avec des mécanismes de jeu simples mais stratégiques.
-
-## Prérequis
-
-Assurez-vous d'avoir les versions spécifiées des packages suivants installées sur votre système, ainsi que Python.
-
-- Installer Anaconda (https://www.anaconda.com/download)
-- Python (version utilisée pour le développement : 3.10.13)
-
-## Installation
-
-Clonez le dépôt sur votre machine locale.
-
-```bash
-git clone https://github.com/B2-Info-23-24/agarpyo-b2-b-alvine17.git
-```
-
-Accédez au répertoire du projet.
-
-```bash
-cd ../agarpyo-b2-b-alvine17
-```
-
-Créez un environnement virtuel 
-
 
 ![alt text](<Capture d'écran 2024-02-11 222016.png>)
 ![alt text](<Capture d'écran 2024-02-11 222035.png>)
