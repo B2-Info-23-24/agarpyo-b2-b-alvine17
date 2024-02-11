@@ -35,9 +35,8 @@ class BigPoint:
                     player_pos.y //= times_larger
                     player_radius -= radius
                     if player_radius < 0:
-                        player_radius = 0  # Assurez-vous que le rayon du joueur ne devienne pas négatif
+                        player_radius = 0 
                 else:
-                    # Si le joueur est plus petit que la boule rouge, masquez le joueur
                     player_radius = 0
 
     def draw(self, screen):
